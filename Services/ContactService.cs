@@ -23,8 +23,7 @@ namespace BasicWebAPI.Services
             contact.ContactName = contactInsertDto.ContactName;
             contact.CompanyId = contactInsertDto.CompanyId;
             contact.CountryId = contactInsertDto.CountryId;
-            contact.company = _datacontext.Companies.Find(contactInsertDto.CompanyId);
-            contact.country = _datacontext.Countries.Find(contactInsertDto.CountryId);
+           
             _datacontext.Contacts.Add(contact);
             _datacontext.SaveChanges();
             return contact;
@@ -55,8 +54,7 @@ namespace BasicWebAPI.Services
            contact.ContactName = contactInsertDto.ContactName;
             contact.CompanyId = contactInsertDto.CompanyId;
             contact.CountryId = contactInsertDto.CountryId;
-            contact.country = _datacontext.Countries.Find(contactInsertDto.CountryId);
-            contact.company = _datacontext.Companies.Find(contactInsertDto.CompanyId);
+           
             _datacontext.SaveChanges();
         }
     }

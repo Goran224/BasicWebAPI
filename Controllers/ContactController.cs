@@ -30,7 +30,7 @@ namespace BasicWebAPI.Controllers
             return Ok(_contactService.Get());
         }
 
-        [HttpGet("WithCountryAndCompany")]
+        [HttpGet("ContactsWithCountryAndCompany")]
         public async Task<IEnumerable> GetWith()
         {
             var mydata =  await _datacontext.Contacts.Join(_datacontext.Companies,

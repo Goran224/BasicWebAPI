@@ -21,15 +21,8 @@ namespace BasicWebAPI
         {
             base.OnModelCreating(builder);
 
-            builder.Entity<Contact>()
-                .HasOne(c => c.company)
-                .WithMany(x => x.Contacs)
-                .HasForeignKey(c => c.CompanyId);
-
-            builder.Entity<Contact>()
-               .HasOne(c => c.country)
-               .WithMany(x => x.Contacs)
-               .HasForeignKey(c => c.CountryId);
+           
+       
         }
     }
 }

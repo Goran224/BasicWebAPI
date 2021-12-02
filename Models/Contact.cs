@@ -10,15 +10,8 @@ namespace BasicWebAPI.Models
     {
         public int ContactId { get; set; }
         public string ContactName { get; set; }
-
-       
         public int? CompanyId { get; set; }
         public int? CountryId { get; set; }
-
-       [ForeignKey("CompanyId")]
-        public virtual Company company { get; set; }
-
-       [ForeignKey("CompanyId")]
-        public virtual Country country { get; set; }
+    
     }
 }
