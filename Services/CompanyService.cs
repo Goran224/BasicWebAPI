@@ -20,7 +20,7 @@ namespace BasicWebAPI.Services
         {
             var company = new Company();
             company.CompanyName = companyInsertDto.CompanyName;
-            _datacontext.Add(company);
+            _datacontext.Companies.Add(company);
             _datacontext.SaveChanges();
             return company;
         }

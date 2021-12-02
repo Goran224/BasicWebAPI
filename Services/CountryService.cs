@@ -20,7 +20,7 @@ namespace BasicWebAPI.Services
         {
             var country = new Country();
             country.CountryName = countryInsertDto.CountryName;
-            _datacontext.Add(country);
+            _datacontext.Countries.Add(country);
             _datacontext.SaveChanges();
             return country;
         }

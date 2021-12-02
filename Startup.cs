@@ -31,6 +31,7 @@ namespace BasicWebAPI
         {
             services.AddScoped<ICompanyService, CompanyService>();
             services.AddScoped<ICountryService, CountryService>();
+            services.AddScoped<IContactService, ContactService>();
             services.AddDbContext<DataContext>(options =>
           options.UseSqlServer(Configuration.GetConnectionString("DevConnection"))
           );

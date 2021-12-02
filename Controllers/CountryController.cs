@@ -17,9 +17,9 @@ namespace BasicWebAPI.Controllers
 
         private readonly ICountryService _countryService;
 
-        public CountryController(ICountryService countryRepository)
+        public CountryController(ICountryService countryService)
         {
-            _countryService = countryRepository;
+            _countryService = countryService;
         }
 
         [HttpGet]
