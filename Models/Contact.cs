@@ -12,13 +12,13 @@ namespace BasicWebAPI.Models
         public string ContactName { get; set; }
 
        
-        public int CompanyId { get; set; }
-        public int CountryId { get; set; }
+        public int? CompanyId { get; set; }
+        public int? CountryId { get; set; }
 
-        [ForeignKey("CompanyId")]
-        public Company company { get; set; }
+       [ForeignKey("CompanyId")]
+        public virtual Company company { get; set; }
 
-        [ForeignKey("CountryId")]
-        public Country country { get; set; }
+       [ForeignKey("CompanyId")]
+        public virtual Country country { get; set; }
     }
 }

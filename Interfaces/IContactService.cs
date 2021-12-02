@@ -9,7 +9,7 @@ namespace BasicWebAPI.Interfaces
 {
     public interface IContactService
     {
-        public  Task<Contact> CreateContact(ContactInsertDto countryInsertDto);
+        public Contact CreateContact(ContactInsertDto countryInsertDto);
         public List<Contact> Get();
         public void DeleteContact(int id);
 

@@ -17,7 +17,7 @@ namespace BasicWebAPI.Services
         {
             _datacontext = dataContext;
         }
-        public async Task<Contact> CreateContact(ContactInsertDto contactInsertDto)
+        public  Contact CreateContact(ContactInsertDto contactInsertDto)
         {
             var contact = new Contact();
             contact.ContactName = contactInsertDto.ContactName;
@@ -44,7 +44,8 @@ namespace BasicWebAPI.Services
 
         public async Task<List<Contact>> GetContactsWithCompanyAndCountry()
         {
-            return null;
+            return await _datacontext.Contacts.Where(x => x.CompanyId != 0 && x.CountryId != 0)
+                .ToListAsync();
    
        }
 

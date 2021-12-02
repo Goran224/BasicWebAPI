@@ -2,7 +2,9 @@
 using BasicWebAPI.Interfaces;
 using BasicWebAPI.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,12 +15,13 @@ namespace BasicWebAPI.Controllers
     [ApiController]
     public class ContactController : ControllerBase
     {
-
+        private readonly DataContext _datacontext;
         private readonly IContactService _contactService;
 
-        public ContactController(IContactService contactService)
+        public ContactController(IContactService contactService, DataContext dataContext)
         {
             _contactService = contactService;
+            _datacontext = dataContext;
         }
 
         [HttpGet]
@@ -27,10 +30,26 @@ namespace BasicWebAPI.Controllers
             return Ok(_contactService.Get());
         }
 
-        [HttpGet("WiwthCountryAndCompany")]
-        public async Task<List<Contact>> GetWithCountryAndCompany()
+        [HttpGet("WithCountryAndCompany")]
+        public async Task<IEnumerable> GetWith()
         {
-            return await _contactService.GetContactsWithCompanyAndCountry();
+            var mydata =  await _datacontext.Contacts.Join(_datacontext.Companies,
+                p => p.CompanyId,
+                pm => pm.CompanyId,
+                (p, pm) => new { p, pm })
+                .Join(_datacontext.Countries,
+                ppm => ppm.p.CountryId,
+                p => p.CountryId,
+                (ppm, p) => new { ppm, p})
+                .Select(result => new
+                {
+                    result.ppm.p.ContactName,
+                    result.p.CountryName,
+                    result.ppm.pm.CompanyName,
+                    
+                }).ToListAsync();
+
+            return mydata;
         }
 
         [HttpPost("CreateContact")]
