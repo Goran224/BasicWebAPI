@@ -41,9 +41,9 @@ namespace BasicWebAPI.Services
             return _datacontext.Contacts.ToList();
         }
 
-        public async Task<List<Contact>> GetContactsWithCompanyAndCountry()
+        public async Task<List<Contact>> GetContactsWithCompanyAndCountry(int CompanyId , int CountryId)
         {
-            return await _datacontext.Contacts.Where(x => x.CompanyId != 0 && x.CountryId != 0)
+            return await _datacontext.Contacts.Where(x => x.CompanyId == CompanyId && x.CountryId == CountryId)
                 .ToListAsync();
    
        }

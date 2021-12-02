@@ -15,7 +15,7 @@ namespace BasicWebAPI.Interfaces
 
         public void Update(int id, ContactInsertDto contactInsertDto);
 
-        public Task<List<Contact>> GetContactsWithCompanyAndCountry();
+        public Task<List<Contact>> GetContactsWithCompanyAndCountry(int CompanyId, int CountryId);
 
 
     }

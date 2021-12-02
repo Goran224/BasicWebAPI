@@ -30,6 +30,17 @@ namespace BasicWebAPI.Controllers
             return Ok(_contactService.Get());
         }
 
+
+        [HttpGet("ContactsFiltered")]
+
+        public async Task<List<Contact>> GetFiltered(int CompanyId, int CountryId)
+        {
+            return await _contactService.GetContactsWithCompanyAndCountry(CompanyId, CountryId);
+        }
+
+
+
+
         [HttpGet("ContactsWithCountryAndCompany")]
         public async Task<IEnumerable> GetWith()
         {
