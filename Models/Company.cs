@@ -10,6 +10,8 @@ namespace BasicWebAPI.Models
         public int CompanyId { get; set; }
         public string CompanyName { get; set; }
 
-       
+        public ICollection<Contact> Contact { get; set; }
+
+
     }
 }

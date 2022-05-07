@@ -38,7 +38,9 @@ namespace BasicWebAPI.Services
 
         public List<Contact> Get()
         {
-            return _datacontext.Contacts.ToList();
+            List<Contact> contacts = _datacontext.Contacts.Include(x => x.Company).Include(c => c.Country).ToList();
+
+            return contacts;
         }
 
         public async Task<List<Contact>> GetContactsWithCompanyAndCountry(int CompanyId , int CountryId)

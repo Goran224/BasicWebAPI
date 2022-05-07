@@ -9,5 +9,9 @@ namespace BasicWebAPI.Models
     {
         public int CountryId { get; set; }
         public string CountryName { get; set; }
+
+        public ICollection<Contact> Contact { get; set; }
+
+
     }
 }
